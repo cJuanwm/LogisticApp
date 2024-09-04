@@ -13,6 +13,7 @@ public class Merchandise {
     //upi (unique product identifier)
     private Integer id;
     //volumeOccupies
+    @Column(name = "volume_occupies", nullable = false)
     private Double volumeOccupies;
     //weightOccupies
     private Double weightOccupies;
