@@ -1,27 +1,19 @@
 package com.example.LogisticApp.helpers.validations;
 
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 
-public class MerchandiseValidation {
+public interface MerchandiseValidation {
 
-    //Validar que volumen solo sea positivo
-    public boolean volumeValidation(double volumeGive){
+    void validateVolumeOccupies(Double volumeOccupies);
 
-        return volumeGive < 0;
+    void validateWeightOccupies(Double weightOccupies);
 
-    }
-    //Validar que peso solo sea positivo
-    public boolean
-    //Validar que descripcion solo puede tener hasta 200 caracteres
-    //Las fechas deben tener el formato MM/DD/YYYY
+    void validateName(String name);
 
-    public boolean formatValidation(LocalDate date) {
+    void validateDescription(String description);
 
-        String dateString = date.toString();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-        String formattedDate = date.format(formatter);
-    }
+    void validateDateEntry(LocalDate dateEntry);
 
+    void validateDateExit(LocalDate dateExit);
 
 }
