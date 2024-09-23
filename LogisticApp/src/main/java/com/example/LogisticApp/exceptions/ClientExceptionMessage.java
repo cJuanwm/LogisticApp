@@ -20,6 +20,8 @@ public enum ClientExceptionMessage {
     WRONG_DOCUMENT_LENGTH("The document cannot exceed 20 characters"),
     WRONG_ZIP_CODE_LENGTH("To comply with standard ZIP code formatting, please enter a maximum of 5 numerical digits."),
 
+    CLIENT_ALREADY_EXIST("We found an existing user profile linked to this document, please try again with another one");
+
     private final String message;
 
 }

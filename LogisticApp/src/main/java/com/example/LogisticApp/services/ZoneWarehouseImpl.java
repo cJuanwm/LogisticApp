@@ -2,7 +2,8 @@ package com.example.LogisticApp.services;
 
 import jakarta.transaction.Transactional;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
+
 import org.springframework.stereotype.Service;
 
 import com.example.LogisticApp.mappers.ZoneWarehouseMapper;
@@ -10,14 +11,13 @@ import com.example.LogisticApp.models.entities.ZoneWarehouseEntity;
 import com.example.LogisticApp.models.entities.dtos.ZoneWarehouseDTO;
 import com.example.LogisticApp.repositories.ZoneWareHouseRepository;
 
+@RequiredArgsConstructor
 @Service
 public class ZoneWarehouseImpl implements ZoneWarehouseService{
 
-    @Autowired
-    private ZoneWareHouseRepository zoneWareHouseRepository;
+    private final ZoneWareHouseRepository zoneWareHouseRepository;
 
-    @Autowired
-    private ZoneWarehouseMapper zoneWarehouseMapper;
+    private final ZoneWarehouseMapper zoneWarehouseMapper;
 
     @Override
     public ZoneWarehouseDTO createZoneWarehouse(ZoneWarehouseDTO zoneWarehouseDTO) {

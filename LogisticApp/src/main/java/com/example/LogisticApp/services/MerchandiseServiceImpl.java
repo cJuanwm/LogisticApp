@@ -2,7 +2,8 @@ package com.example.LogisticApp.services;
 
 import jakarta.transaction.Transactional;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
+
 import org.springframework.stereotype.Service;
 
 import com.example.LogisticApp.mappers.MerchandiseMapper;
@@ -10,14 +11,13 @@ import com.example.LogisticApp.models.entities.MerchandiseEntity;
 import com.example.LogisticApp.models.entities.dtos.MerchandiseDTO;
 import com.example.LogisticApp.repositories.MerchandiseRepository;
 
+@RequiredArgsConstructor
 @Service
 public class MerchandiseServiceImpl implements MerchandiseService{
 
-    @Autowired
-    private MerchandiseRepository merchandiseRepository;
+    private final MerchandiseRepository merchandiseRepository;
 
-    @Autowired
-    private MerchandiseMapper merchandiseMapper;
+    private final MerchandiseMapper merchandiseMapper;
 
     @Override
     public MerchandiseDTO createMerchandise(MerchandiseDTO merchandiseDTO) {

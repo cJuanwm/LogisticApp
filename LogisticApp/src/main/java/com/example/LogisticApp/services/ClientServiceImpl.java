@@ -1,31 +1,33 @@
 package com.example.LogisticApp.services;
-
-import com.example.LogisticApp.helpers.validations.ClientValidationImpl;
 import jakarta.transaction.Transactional;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
+
 import org.springframework.stereotype.Service;
 
+import com.example.LogisticApp.helpers.validations.ClientValidationImpl;
 import com.example.LogisticApp.mappers.ClientMapper;
 import com.example.LogisticApp.models.entities.ClientEntity;
 import com.example.LogisticApp.models.entities.dtos.ClientDTO;
 import com.example.LogisticApp.repositories.ClientRepository;
 
+@RequiredArgsConstructor
 @Service
 public class ClientServiceImpl implements ClientService{
 
-    @Autowired
-    private ClientRepository clientRepository;
+    private final ClientRepository clientRepository;
 
-    @Autowired
-    private ClientMapper clientMapper;
+    private final ClientMapper clientMapper;
 
-    @Autowired
-    private ClientValidationImpl clientValidation;
+    private final ClientValidationImpl clientValidation;
 
     @Override
     public ClientDTO createClient(ClientDTO clientDTO) {
         clientValidation.validateClientData(clientDTO);
+
+        ClientEntity clientExistence = clientRepository.findByDocument(clientDTO.getDocument());
+
+        clientValidation.validateClientExistence(clientDTO, clientExistence);
 
         ClientEntity clientToCreate = clientMapper.clientConvertToEntity(clientDTO);
         ClientEntity clientSaved = clientRepository.save(clientToCreate);

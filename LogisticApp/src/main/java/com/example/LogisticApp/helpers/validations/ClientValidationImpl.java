@@ -1,20 +1,22 @@
 package com.example.LogisticApp.helpers.validations;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
+
 import org.springframework.stereotype.Component;
 
 import com.example.LogisticApp.exceptions.ClientExceptionMessage;
 import com.example.LogisticApp.exceptions.ClientExceptionCode;
 import com.example.LogisticApp.exceptions.custom.ClientException;
 import com.example.LogisticApp.models.entities.dtos.ClientDTO;
+import com.example.LogisticApp.models.entities.ClientEntity;
 import com.example.LogisticApp.shared.CommonRegexPattern;
 import com.example.LogisticApp.shared.CommonValidation;
 
 @Component
+@RequiredArgsConstructor
 public class ClientValidationImpl implements ClientValidation, CommonValidation {
 
-    @Autowired
-    private CommonRegexPattern commonRegexPattern;
+    private final CommonRegexPattern commonRegexPattern;
 
     @Override
     public void validateClientData(ClientDTO clientDTO){
@@ -48,7 +50,7 @@ public class ClientValidationImpl implements ClientValidation, CommonValidation 
 
     @Override
     public void validateZipCode(String zipCode) throws ClientException {
-        if(!zipCode.matches("^\\d{5}$")){
+        if(!zipCode.matches("^\\d{5}(-\\d{4})?$")){
             throw new ClientException(ClientExceptionMessage.WRONG_ZIP_CODE_FORMAT.getMessage(), ClientExceptionCode.CODE_WRONG_ZIP_CODE_FORMAT.getCode());
         }
         if (zipCode.length() > 5){
@@ -74,6 +76,13 @@ public class ClientValidationImpl implements ClientValidation, CommonValidation 
     public void validatePhone(String phone) throws ClientException {
         if (!phone.matches("^\\d+$")){
             throw new ClientException(ClientExceptionMessage.WRONG_PHONE_FORMAT.getMessage(), ClientExceptionCode.CODE_WRONG_PHONE_FORMAT.getCode());
+        }
+    }
+
+    @Override
+    public void validateClientExistence(ClientDTO clientRequested, ClientEntity clientInDb) throws ClientException{
+        if(clientInDb != null && clientRequested.getDocument().equals(clientInDb.getDocument())){
+            throw new ClientException(ClientExceptionMessage.CLIENT_ALREADY_EXIST.getMessage(), ClientExceptionCode.CODE_CLIENT_ALREADY_EXIST.getCode());
         }
     }
 

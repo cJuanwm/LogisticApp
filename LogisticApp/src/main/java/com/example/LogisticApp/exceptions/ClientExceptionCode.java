@@ -20,6 +20,8 @@ public enum ClientExceptionCode {
     CODE_WRONG_DOCUMENT_LENGTH("E201L"),
     CODE_WRONG_ZIP_CODE_LENGTH("E202L"),
 
+    CODE_CLIENT_ALREADY_EXIST("E301E");
+
     private final String code;
 
 }
