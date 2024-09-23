@@ -2,9 +2,11 @@ package com.example.LogisticApp.shared;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.springframework.stereotype.Component;
 
-@NoArgsConstructor
 @Getter
+@NoArgsConstructor
+@Component
 public class CommonRegexPattern {
 
     private final String departmentRegex = "^[A-Za-z0-9]{3,20}$";

@@ -1,5 +1,6 @@
 package com.example.LogisticApp.helpers.validations;
 
+import com.example.LogisticApp.models.entities.ClientEntity;
 import com.example.LogisticApp.models.entities.dtos.ClientDTO;
 
 public interface ClientValidation {
@@ -17,5 +18,7 @@ public interface ClientValidation {
     void validateEmail(String email);
 
     void validatePhone(String phone);
+
+    void validateClientExistence(ClientDTO clientRequested, ClientEntity clientInDb);
 
 }

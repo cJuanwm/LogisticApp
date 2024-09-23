@@ -1,6 +1,7 @@
 package com.example.LogisticApp.controllers;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -8,12 +9,12 @@ import org.springframework.web.bind.annotation.*;
 import com.example.LogisticApp.models.entities.dtos.ZoneWarehouseDTO;
 import com.example.LogisticApp.services.ZoneWarehouseService;
 
+@RequiredArgsConstructor
 @RestController
 @RequestMapping("/api-zone-warehouse")
 public class ZoneWarehouseController {
 
-    @Autowired
-    ZoneWarehouseService zoneWarehouseService;
+    private final ZoneWarehouseService zoneWarehouseService;
 
     @PostMapping("/zone-warehouse")
     public ResponseEntity<ZoneWarehouseDTO> createZoneWarehouse(@RequestBody ZoneWarehouseDTO zoneWarehouseDTO){
