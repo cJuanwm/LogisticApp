@@ -17,19 +17,19 @@ public class WarehouseServiceImpl implements WarehouseService{
 
     private final WarehouseRepository warehouseRepository;
 
-    private final WarehouseMapper wareHouseMapper;
+    private final WarehouseMapper warehouseMapper;
 
     @Override
     public WarehouseDTO createWarehouse(WarehouseDTO wareHouseDTO) {
-        WarehouseEntity warehouseToCreate = wareHouseMapper.wareHouseConvertToEntity(wareHouseDTO);
+        WarehouseEntity warehouseToCreate = warehouseMapper.warehouseConvertToEntity(wareHouseDTO);
         warehouseRepository.save(warehouseToCreate);
-        return wareHouseMapper.wareHouseConvertToDto(warehouseToCreate);
+        return warehouseMapper.warehouseConvertToDto(warehouseToCreate);
     }
 
     @Override
     public WarehouseDTO getWarehouse(int id) {
         WarehouseEntity warehouseToGet = warehouseRepository.findById(id);
-        return wareHouseMapper.wareHouseConvertToDto(warehouseToGet);
+        return warehouseMapper.warehouseConvertToDto(warehouseToGet);
     }
 
     @Override
@@ -44,7 +44,7 @@ public class WarehouseServiceImpl implements WarehouseService{
 
         warehouseRepository.save(warehouseToUpdate);
 
-        return wareHouseMapper.wareHouseConvertToDto(warehouseToUpdate);
+        return warehouseMapper.warehouseConvertToDto(warehouseToUpdate);
     }
 
     @Transactional
