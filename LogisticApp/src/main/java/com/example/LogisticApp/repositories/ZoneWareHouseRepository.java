@@ -12,5 +12,4 @@ public interface ZoneWareHouseRepository extends JpaRepository<ZoneWarehouseEnti
     //Se sobre escribe metodo ya que el por defecto me retorna optional y no lo considero necesario.
     ZoneWarehouseEntity findById(int id);
 
-
 }

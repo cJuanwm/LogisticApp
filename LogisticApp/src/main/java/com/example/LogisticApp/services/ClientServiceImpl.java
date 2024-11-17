@@ -1,12 +1,13 @@
 package com.example.LogisticApp.services;
+
 import jakarta.transaction.Transactional;
 
 import lombok.RequiredArgsConstructor;
 
 import org.springframework.stereotype.Service;
 
-import com.example.LogisticApp.helpers.validations.ClientValidationImpl;
 import com.example.LogisticApp.mappers.ClientMapper;
+import com.example.LogisticApp.helpers.validations.ClientValidationImpl;
 import com.example.LogisticApp.models.entities.ClientEntity;
 import com.example.LogisticApp.models.entities.dtos.ClientDTO;
 import com.example.LogisticApp.repositories.ClientRepository;

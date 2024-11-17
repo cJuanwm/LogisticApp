@@ -1,11 +1,15 @@
 package com.example.LogisticApp.models.entities;
 
+import java.util.List;
+
 import jakarta.persistence.*;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Getter
 @Setter
@@ -23,5 +27,8 @@ public class ZoneWarehouseEntity {
     private Double maxWeight;
     private Double occupiedVolume;
     private Double occupiedWeight;
+    @OneToMany(mappedBy = "zoneWarehouse")
+    @JsonManagedReference
+    private List<MerchandiseEntity> listOfMerchandises;
 
 }

@@ -26,5 +26,8 @@ public class MerchandiseEntity {
     private String description;
     private LocalDate dateEntry;
     private LocalDate dateExit;
+    @ManyToOne
+    @JoinColumn(referencedColumnName = "id")
+    private ZoneWarehouseEntity zoneWarehouse;
 
 }

@@ -1,5 +1,7 @@
 package com.example.LogisticApp.services;
 
+import java.util.List;
+
 import com.example.LogisticApp.models.entities.dtos.ZoneWarehouseDTO;
 
 public interface ZoneWarehouseService {
@@ -11,5 +13,7 @@ public interface ZoneWarehouseService {
     ZoneWarehouseDTO updateZoneWarehouse(int id, ZoneWarehouseDTO zoneWarehouseDTO);
 
     void deleteZoneWareHouse(int id);
+
+    List<ZoneWarehouseDTO> getListZoneWarehouse();
 
 }

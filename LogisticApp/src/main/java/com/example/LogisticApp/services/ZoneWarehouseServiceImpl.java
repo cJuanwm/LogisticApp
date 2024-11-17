@@ -1,5 +1,7 @@
 package com.example.LogisticApp.services;
 
+import java.util.List;
+
 import jakarta.transaction.Transactional;
 
 import lombok.RequiredArgsConstructor;
@@ -13,7 +15,7 @@ import com.example.LogisticApp.repositories.ZoneWareHouseRepository;
 
 @RequiredArgsConstructor
 @Service
-public class ZoneWarehouseImpl implements ZoneWarehouseService{
+public class ZoneWarehouseServiceImpl implements ZoneWarehouseService{
 
     private final ZoneWareHouseRepository zoneWareHouseRepository;
 
@@ -30,6 +32,12 @@ public class ZoneWarehouseImpl implements ZoneWarehouseService{
     public ZoneWarehouseDTO getZoneWareHouse(int id) {
         ZoneWarehouseEntity zoneWarehouseToGet = zoneWareHouseRepository.findById(id);
         return zoneWarehouseMapper.zoneWarehouseConvertToDto(zoneWarehouseToGet);
+    }
+
+    @Override
+    public List<ZoneWarehouseDTO> getListZoneWarehouse(){
+        List<ZoneWarehouseEntity> zoneWarehouseEntities = zoneWareHouseRepository.findAll();
+        return zoneWarehouseMapper.listZoneWarehouseConvertToDto(zoneWarehouseEntities);
     }
 
     @Override

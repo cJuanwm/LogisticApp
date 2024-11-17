@@ -19,5 +19,6 @@ public class MerchandiseDTO {
     private String description;
     private LocalDate dateEntry;
     private LocalDate dateExit;
+    private int zoneWarehouseId;
 
 }

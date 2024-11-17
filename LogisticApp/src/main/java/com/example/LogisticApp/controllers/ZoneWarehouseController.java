@@ -1,5 +1,7 @@
 package com.example.LogisticApp.controllers;
 
+import java.util.List;
+
 import lombok.RequiredArgsConstructor;
 
 import org.springframework.http.HttpStatus;
@@ -26,6 +28,12 @@ public class ZoneWarehouseController {
     public ResponseEntity<ZoneWarehouseDTO> getZoneWarehouse(@PathVariable int id){
         ZoneWarehouseDTO zoneWarehouseGet = zoneWarehouseService.getZoneWareHouse(id);
         return new ResponseEntity<>(zoneWarehouseGet, HttpStatus.OK);
+    }
+
+    @GetMapping("/zone-warehouse/")
+    public ResponseEntity<List<ZoneWarehouseDTO>> getZonesWarehouse(){
+        List<ZoneWarehouseDTO> zonesWarehouseGet = zoneWarehouseService.getListZoneWarehouse();
+        return new ResponseEntity<>(zonesWarehouseGet, HttpStatus.OK);
     }
 
     @PutMapping("/zone-warehouse/{id}")
